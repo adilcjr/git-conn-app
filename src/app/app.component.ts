@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GitConnectorService } from './services/git-connector.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'git-conn-app';
+
+  login = '';
+  repository = '';
+  repoData: any;
+
+  constructor(private _service: GitConnectorService) {}
+
+  onSubmit(repoForm: any) {
+
+    console.log('Data: ' + repoForm.login + ', ' + repoForm.repository);
+
+    this._service.getRepository(repoForm.login, repoForm.repository).subscribe( res => {
+      this.repoData = res;
+    });
+
+    console.log('Data: ' + this.repoData);
+  }
 }
