@@ -78,7 +78,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <h3>Git Best Repos Finder</h3>\r\n  <hr>\r\n  <p>&nbsp;</p>\r\n\r\n  <div class=\"row\">\r\n\r\n    <div class=\"col-md-4 col-md-offset-2\">\r\n      <h5>Find Best Repos By Language</h5>\r\n      <br>\r\n      <form #repoForm=\"ngForm\" (ngSubmit)=\"onSubmit(repoForm.value)\">\r\n        <div class=\"form-group\">\r\n          <label for=\"language\">Choose a programming language: </label>\r\n          &nbsp;\r\n          <select name=\"language\" [(ngModel)]=\"language\">\r\n            <option value=\"Python\"> Python </option>\r\n            <option value=\"Java\"> Java </option>\r\n            <option value=\"Ruby\"> Ruby </option>\r\n            <option value=\"PHP\"> PHP </option>\r\n          </select>\r\n        </div>\r\n        <div class=\"text-right\">\r\n          <button type=\"submit\" class=\"btn btn-primary\"><i class=\"fab fa-searchengin\"></i> Search </button>\r\n        </div>\r\n      </form>\r\n    </div>\r\n\r\n    <div class=\"col-md-6\">\r\n      <div [hidden]=\"!loading\" class=\"text-center\">Loading...</div>\r\n      <div [hidden]=\"!error\" class=\"text-center alert alert-warning\">\r\n        <strong>Warning!</strong> {{error}}\r\n      </div>\r\n      <div [hidden]=\"repoData==null\">\r\n        <div class=\"text-right\">\r\n          <button type=\"submit\" class=\"btn btn-primary\"><i class=\"fas fa-save\"></i> Save Results </button>\r\n        </div>\r\n        <br>\r\n        <ng-container *ngFor=\"let repo of repoData\">\r\n          <div class=\"alert alert-info\">\r\n            <h5>{{ repo.name }}</h5>\r\n            <p>{{ repo.description }}</p>\r\n            <p><a target=\"_blank\" href=\"{{ repo.html_url }}\">{{ repo.html_url }}</a></p>\r\n            <button type=\"button\" class=\"btn btn-primary\">\r\n                <i class=\"fas fa-star\"></i>&nbsp;\r\n                <span class=\"badge badge-light\">{{ repo.stargazers_count }}</span>\r\n            </button>\r\n            &nbsp;\r\n            <button type=\"button\" class=\"btn btn-primary\">\r\n                <i class=\"fas fa-glasses\"></i>&nbsp;\r\n                <span class=\"badge badge-light\">{{ repo.watchers_count }}</span>\r\n            </button>\r\n          </div>\r\n        </ng-container>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"container\">\r\n  <h3>Git Best Repos Finder</h3>\r\n  <hr>\r\n  <p>&nbsp;</p>\r\n\r\n  <div class=\"row\">\r\n\r\n    <div class=\"col-md-4 col-md-offset-2\">\r\n      <h5>Find Best Repos By Language</h5>\r\n      <br>\r\n      <form #repoForm=\"ngForm\" (ngSubmit)=\"onSubmit(repoForm.value)\">\r\n        <div class=\"form-group\">\r\n          <label for=\"language\">Choose a programming language: </label>\r\n          &nbsp;\r\n          <select name=\"language\" [(ngModel)]=\"language\">\r\n            <option value=\"Python\"> Python </option>\r\n            <option value=\"Java\"> Java </option>\r\n            <option value=\"Ruby\"> Ruby </option>\r\n            <option value=\"PHP\"> PHP </option>\r\n          </select>\r\n        </div>\r\n        <div class=\"text-right\">\r\n          <button type=\"submit\" class=\"btn btn-primary\"><i class=\"fab fa-searchengin\"></i> Search </button>\r\n        </div>\r\n      </form>\r\n\r\n      <div class='table-responsive'>\r\n        <table class='table'>\r\n          <thead>\r\n            <tr>\r\n              <th>ID</th>\r\n              <th>Name</th>\r\n              <th>Stars</th>\r\n            </tr>\r\n          </thead>\r\n          <tbody>\r\n            <tr *ngFor=\"let repo of repoData\">\r\n              <td>{{repo.id}}</td>\r\n              <td>{{repo.name}}</td>\r\n              <td>{{repo.stargazers_count}}</td>\r\n            </tr>\r\n          </tbody>\r\n        </table>\r\n      </div>\r\n      <!-- {{ repoData | json }} -->\r\n    </div>\r\n\r\n    <div class=\"col-md-6\">\r\n      <div [hidden]=\"!loading\" class=\"text-center\">Loading...</div>\r\n      <div [hidden]=\"!error\" class=\"text-center alert alert-warning\">\r\n        <strong>Warning!</strong> {{error}}\r\n      </div>\r\n      <div [hidden]=\"repoData==null\">\r\n        <div class=\"text-right\">\r\n          <button type=\"submit\" class=\"btn btn-primary\"><i class=\"fas fa-save\"></i> Save Results </button>\r\n        </div>\r\n        <br>\r\n        <ng-container *ngFor=\"let repo of repoGit\">\r\n          <div class=\"alert alert-info\">\r\n            <h5>{{ repo.name }}</h5>\r\n            <p>{{ repo.description }}</p>\r\n            <p><a target=\"_blank\" href=\"{{ repo.html_url }}\">{{ repo.html_url }}</a></p>\r\n            <button type=\"button\" class=\"btn btn-primary\">\r\n                <i class=\"fas fa-star\"></i>&nbsp;\r\n                <span class=\"badge badge-light\">{{ repo.stargazers_count }}</span>\r\n            </button>\r\n            &nbsp;\r\n            <button type=\"button\" class=\"btn btn-primary\">\r\n                <i class=\"fas fa-glasses\"></i>&nbsp;\r\n                <span class=\"badge badge-light\">{{ repo.watchers_count }}</span>\r\n            </button>\r\n          </div>\r\n        </ng-container>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -94,6 +94,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _services_git_connector_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./services/git-connector.service */ "./src/app/services/git-connector.service.ts");
+/* harmony import */ var _services_repository_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./services/repository.service */ "./src/app/services/repository.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -105,26 +106,41 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
+// import { repositoryDAO } from '../../repositoryDAO.js';
 var AppComponent = /** @class */ (function () {
-    function AppComponent(_service) {
+    function AppComponent(_service, _api) {
         this._service = _service;
+        this._api = _api;
         this.loading = false;
         this.language = '';
         this.error = '';
     }
+    // tslint:disable-next-line: use-life-cycle-interface
+    AppComponent.prototype.ngOnInit = function () {
+        this.showSavedRepos();
+    };
     AppComponent.prototype.onSubmit = function (repoForm) {
         var _this = this;
         this.loading = true;
         this.error = '';
-        this.repoData = null;
+        this.repoGit = null;
         this._service.getBestRepositoriesByLanguage(repoForm.language)
             .subscribe(function (response) {
-            _this.repoData = response.items;
+            _this.repoGit = response.items;
         }, function (error) {
             _this.error = error.message;
             _this.loading = false;
         }, function () {
             _this.loading = false;
+        });
+    };
+    AppComponent.prototype.showSavedRepos = function () {
+        var _this = this;
+        this._api.getRepositories().subscribe(function (response) {
+            _this.repoData = response;
+        }, function (error) {
+            console.log(error.message);
         });
     };
     AppComponent = __decorate([
@@ -133,7 +149,8 @@ var AppComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./app.component.html */ "./src/app/app.component.html"),
             styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")]
         }),
-        __metadata("design:paramtypes", [_services_git_connector_service__WEBPACK_IMPORTED_MODULE_1__["GitConnectorService"]])
+        __metadata("design:paramtypes", [_services_git_connector_service__WEBPACK_IMPORTED_MODULE_1__["GitConnectorService"],
+            _services_repository_service__WEBPACK_IMPORTED_MODULE_2__["RepositoryService"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -243,6 +260,62 @@ var GitConnectorService = /** @class */ (function () {
         __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
     ], GitConnectorService);
     return GitConnectorService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/repository.service.ts":
+/*!************************************************!*\
+  !*** ./src/app/services/repository.service.ts ***!
+  \************************************************/
+/*! exports provided: RepositoryService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RepositoryService", function() { return RepositoryService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var RepositoryService = /** @class */ (function () {
+    function RepositoryService(_http) {
+        this._http = _http;
+        this._defaultUrl = 'http://localhost:8080/api/repositories/';
+    }
+    RepositoryService.prototype.getRepositories = function () {
+        return this._http.get(this._defaultUrl);
+    };
+    RepositoryService.prototype.getRepository = function (id) {
+        return this._http.get(this._defaultUrl + id);
+    };
+    RepositoryService.prototype.create = function (repo) {
+        return this._http.post(this._defaultUrl, repo);
+    };
+    RepositoryService.prototype.update = function (repo) {
+        return this._http.put(this._defaultUrl, repo);
+    };
+    RepositoryService.prototype.delete = function (id) {
+        return this._http.delete(this._defaultUrl + id);
+    };
+    RepositoryService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
+    ], RepositoryService);
+    return RepositoryService;
 }());
 
 
