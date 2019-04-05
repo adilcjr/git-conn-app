@@ -78,7 +78,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <h3>Git Best Repos Finder</h3>\r\n  <hr>\r\n  <p>&nbsp;</p>\r\n\r\n  <div class=\"row\">\r\n\r\n    <div class=\"col-md-4 col-md-offset-2\">\r\n      <h5>Find Best Repos By Language</h5>\r\n      <br>\r\n      <form #repoForm=\"ngForm\" (ngSubmit)=\"onSubmit(repoForm.value)\">\r\n        <div class=\"form-group\">\r\n          <label for=\"language\">Choose a programming language: </label>\r\n          &nbsp;\r\n          <select name=\"language\" [(ngModel)]=\"language\">\r\n            <option value=\"Python\"> Python </option>\r\n            <option value=\"Java\"> Java </option>\r\n            <option value=\"Ruby\"> Ruby </option>\r\n            <option value=\"PHP\"> PHP </option>\r\n          </select>\r\n        </div>\r\n        <div class=\"text-right\">\r\n          <button type=\"submit\" class=\"btn btn-primary\"><i class=\"fab fa-searchengin\"></i> Search </button>\r\n        </div>\r\n      </form>\r\n\r\n      <div class='table-responsive'>\r\n        <table class='table'>\r\n          <thead>\r\n            <tr>\r\n              <th>ID</th>\r\n              <th>Name</th>\r\n              <th>Stars</th>\r\n            </tr>\r\n          </thead>\r\n          <tbody>\r\n            <tr *ngFor=\"let repo of repoData\">\r\n              <td>{{repo.id}}</td>\r\n              <td>{{repo.name}}</td>\r\n              <td>{{repo.stargazers_count}}</td>\r\n            </tr>\r\n          </tbody>\r\n        </table>\r\n      </div>\r\n      <!-- {{ repoData | json }} -->\r\n    </div>\r\n\r\n    <div class=\"col-md-6\">\r\n      <div [hidden]=\"!loading\" class=\"text-center\">Loading...</div>\r\n      <div [hidden]=\"!error\" class=\"text-center alert alert-warning\">\r\n        <strong>Warning!</strong> {{error}}\r\n      </div>\r\n      <div [hidden]=\"repoData==null\">\r\n        <div class=\"text-right\">\r\n          <button type=\"submit\" class=\"btn btn-primary\"><i class=\"fas fa-save\"></i> Save Results </button>\r\n        </div>\r\n        <br>\r\n        <ng-container *ngFor=\"let repo of repoGit\">\r\n          <div class=\"alert alert-info\">\r\n            <h5>{{ repo.name }}</h5>\r\n            <p>{{ repo.description }}</p>\r\n            <p><a target=\"_blank\" href=\"{{ repo.html_url }}\">{{ repo.html_url }}</a></p>\r\n            <button type=\"button\" class=\"btn btn-primary\">\r\n                <i class=\"fas fa-star\"></i>&nbsp;\r\n                <span class=\"badge badge-light\">{{ repo.stargazers_count }}</span>\r\n            </button>\r\n            &nbsp;\r\n            <button type=\"button\" class=\"btn btn-primary\">\r\n                <i class=\"fas fa-glasses\"></i>&nbsp;\r\n                <span class=\"badge badge-light\">{{ repo.watchers_count }}</span>\r\n            </button>\r\n          </div>\r\n        </ng-container>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"container\">\r\n  <h3>Git Best Repos Finder</h3>\r\n  <hr>\r\n  <p>&nbsp;</p>\r\n\r\n  <div class=\"row\">\r\n\r\n    <div class=\"col-md-4 col-md-offset-2\">\r\n      <h5>Find Best Repos By Language</h5>\r\n      <br>\r\n      <form #repoForm=\"ngForm\" (ngSubmit)=\"onSubmit(repoForm.value)\">\r\n        <div class=\"form-group\">\r\n          <label for=\"language\">Choose a programming language: </label>\r\n          &nbsp;\r\n          <select name=\"language\" [(ngModel)]=\"language\">\r\n            <option value=\"Python\"> Python </option>\r\n            <option value=\"Java\"> Java </option>\r\n            <option value=\"Ruby\"> Ruby </option>\r\n            <option value=\"PHP\"> PHP </option>\r\n          </select>\r\n        </div>\r\n        <div class=\"text-right\">\r\n          <button type=\"submit\" class=\"btn btn-primary\"><i class=\"fab fa-searchengin\"></i> Search </button>\r\n        </div>\r\n      </form>\r\n\r\n      <div class='table-responsive'>\r\n        <table class='table'>\r\n          <thead>\r\n            <tr>\r\n              <th>ID</th>\r\n              <th>Name</th>\r\n              <th>Stars</th>\r\n            </tr>\r\n          </thead>\r\n          <tbody>\r\n            <tr *ngFor=\"let repo of repoData\">\r\n              <td>{{repo.id}}</td>\r\n              <td>{{repo.name}}</td>\r\n              <td>{{repo.stargazers_count}}</td>\r\n            </tr>\r\n          </tbody>\r\n        </table>\r\n      </div>\r\n      <!-- {{ repoData | json }} -->\r\n    </div>\r\n\r\n    <div class=\"col-md-6\">\r\n      <div [hidden]=\"!loading\" class=\"text-center\">Loading...</div>\r\n      <div [hidden]=\"!error\" class=\"text-center alert alert-warning\">\r\n        <strong>Warning!</strong> {{error}}\r\n      </div>\r\n      <div [hidden]=\"repoGit==null\">\r\n        <div class=\"text-right\">\r\n          <button type=\"submit\" class=\"btn btn-primary\"><i class=\"fas fa-save\"></i> Save Results </button>\r\n        </div>\r\n        <br>\r\n        <ng-container *ngFor=\"let repo of repoGit\">\r\n          <div class=\"alert alert-info\">\r\n            <h5>{{ repo.name }}</h5>\r\n            <p>{{ repo.description }}</p>\r\n            <p><a target=\"_blank\" href=\"{{ repo.html_url }}\">{{ repo.html_url }}</a></p>\r\n\r\n            <button type=\"button\" class=\"btn btn-primary\">\r\n                <i class=\"fas fa-star\"></i>&nbsp;\r\n                <span class=\"badge badge-light\">{{ repo.stargazers_count }}</span>\r\n            </button>\r\n            &nbsp;\r\n            <button type=\"button\" class=\"btn btn-primary\">\r\n                <i class=\"fas fa-glasses\"></i>&nbsp;\r\n                <span class=\"badge badge-light\">{{ repo.watchers_count }}</span>\r\n            </button>\r\n          </div>\r\n        </ng-container>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -292,22 +292,32 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var RepositoryService = /** @class */ (function () {
     function RepositoryService(_http) {
         this._http = _http;
-        this._defaultUrl = 'http://localhost:8080/api/repositories/';
+        this._devUrl = 'http://localhost:8080/api/repositories/';
+        this._prodUrl = 'https://git-conn-app.herokuapp.com/api/repositories/';
+        this._url = '';
+        // Put true for production environment, false otherwise
+        var forProduction = false;
+        if (forProduction) {
+            this._url = this._prodUrl;
+        }
+        else {
+            this._url = this._devUrl;
+        }
     }
     RepositoryService.prototype.getRepositories = function () {
-        return this._http.get(this._defaultUrl);
+        return this._http.get(this._url);
     };
     RepositoryService.prototype.getRepository = function (id) {
-        return this._http.get(this._defaultUrl + id);
+        return this._http.get(this._url + id);
     };
     RepositoryService.prototype.create = function (repo) {
-        return this._http.post(this._defaultUrl, repo);
+        return this._http.post(this._url, repo);
     };
     RepositoryService.prototype.update = function (repo) {
-        return this._http.put(this._defaultUrl, repo);
+        return this._http.put(this._url, repo);
     };
     RepositoryService.prototype.delete = function (id) {
-        return this._http.delete(this._defaultUrl + id);
+        return this._http.delete(this._url + id);
     };
     RepositoryService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({

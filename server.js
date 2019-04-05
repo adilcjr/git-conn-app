@@ -29,23 +29,3 @@ app.get('/*', function(req,res) {
 // Start the app by listening on the default Heroku port
 app.listen(process.env.PORT || 8080);
 console.log("App up and running on port 8080!");
-
-//Server backend
-// const app_back = express();
-
-// app_back.use(bodyparser.json());
-// app_back.use(bodyparser.urlencoded({extended:false}));
-
-// app_back.use(function(req, res, next) {
-//     res.header("Access-Control-Allow-Origin", "*");
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//     res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-//     next();
-// });
-
-// var repositoriesAPI = require("./repository.controller");
-
-// app_back.use("/api/repositories", repositoriesAPI);
-
-// app_back.listen(8088);
-// console.log("Server up and running on port 8088!");

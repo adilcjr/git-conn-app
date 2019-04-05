@@ -50,7 +50,7 @@
       <div [hidden]="!error" class="text-center alert alert-warning">
         <strong>Warning!</strong> {{error}}
       </div>
-      <div [hidden]="repoData==null">
+      <div [hidden]="repoGit==null">
         <div class="text-right">
           <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save Results </button>
         </div>
@@ -60,6 +60,7 @@
             <h5>{{ repo.name }}</h5>
             <p>{{ repo.description }}</p>
             <p><a target="_blank" href="{{ repo.html_url }}">{{ repo.html_url }}</a></p>
+
             <button type="button" class="btn btn-primary">
                 <i class="fas fa-star"></i>&nbsp;
                 <span class="badge badge-light">{{ repo.stargazers_count }}</span>
