@@ -11,6 +11,7 @@ export class AppComponent {
 
   repoData: Repo[];
   loading = false;
+  language = '';
   error = '';
 
   constructor(private _service: GitConnectorService) {}
