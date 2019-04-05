@@ -1,17 +1,30 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Repo } from '../../assets/repo';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GitConnectorService {
 
-  _url =  'https://api.github.com/repos/';
-  parsed = '';
+  _defaultUrl =  'https://api.github.com';
 
   constructor(private _http: HttpClient) { }
 
-  public getRepository(login: string, repository: string): any {
-    return this._http.get<any>(this._url + login + '/' + repository);
+  public findRepositoryByName(login: string, repository: string): any {
+    return this._http.get<any>(this._defaultUrl + 'repos/' + login + '/' + repository);
   }
+
+  public getBestRepositoriesByLanguage(language: string): Observable<any> {
+
+    const params = new HttpParams()
+      .append('q', 'language:' + language)
+      .append('sort', 'stars')
+      .append('order', 'desc')
+      .append('per_page', '5');
+
+    return this._http.get<any>(this._defaultUrl + '/search/repositories', {params});
+  }
+
 }

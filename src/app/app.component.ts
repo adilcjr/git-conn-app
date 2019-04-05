@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { GitConnectorService } from './services/git-connector.service';
+import { Repo } from '../assets/repo';
 
 @Component({
   selector: 'app-root',
@@ -8,20 +9,30 @@ import { GitConnectorService } from './services/git-connector.service';
 })
 export class AppComponent {
 
-  login = '';
-  repository = '';
-  repoData: any;
+  repoData: Repo[];
+  loading = false;
+  error = '';
 
   constructor(private _service: GitConnectorService) {}
 
   onSubmit(repoForm: any) {
 
-    console.log('Data: ' + repoForm.login + ', ' + repoForm.repository);
+    this.loading = true;
+    this.error = '';
+    this.repoData = null;
 
-    this._service.getRepository(repoForm.login, repoForm.repository).subscribe( res => {
-      this.repoData = res;
-    });
-
-    console.log('Data: ' + this.repoData);
+    this._service.getBestRepositoriesByLanguage(repoForm.language)
+      .subscribe(
+        (response) => {
+          this.repoData = response.items;
+        },
+        (error) => {
+          this.error = error.message;
+          this.loading = false;
+        },
+        () => {
+          this.loading = false;
+        }
+      );
   }
 }
