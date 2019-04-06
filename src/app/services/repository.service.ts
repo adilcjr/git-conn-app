@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class RepositoryService {
 
   private _devUrl = 'http://localhost:8080/api/repositories/';
-  private _prodUrl = 'https://git-conn-app.herokuapp.com/api/repositories/';
+  private _prodUrl = 'https://git-conn-api.herokuapp.com/api/repositories/';
   private _url = '';
 
   constructor(private _http: HttpClient) {

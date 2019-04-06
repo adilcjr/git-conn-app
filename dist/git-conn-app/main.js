@@ -293,10 +293,10 @@ var RepositoryService = /** @class */ (function () {
     function RepositoryService(_http) {
         this._http = _http;
         this._devUrl = 'http://localhost:8080/api/repositories/';
-        this._prodUrl = 'https://git-conn-app.herokuapp.com/api/repositories/';
+        this._prodUrl = 'https://git-conn-api.herokuapp.com/api/repositories/';
         this._url = '';
         // Put true for production environment, false otherwise
-        var forProduction = false;
+        var forProduction = true;
         if (forProduction) {
             this._url = this._prodUrl;
         }

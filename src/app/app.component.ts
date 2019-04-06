@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { GitConnectorService } from './services/git-connector.service';
 import { Repo } from '../assets/repo';
 import { RepositoryService } from './services/repository.service';
-// import { repositoryDAO } from '../../repositoryDAO.js';
 
 @Component({
   selector: 'app-root',

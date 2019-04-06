@@ -13,10 +13,11 @@
           <label for="language">Choose a programming language: </label>
           &nbsp;
           <select name="language" [(ngModel)]="language">
-            <option value="Python"> Python </option>
-            <option value="Java"> Java </option>
-            <option value="Ruby"> Ruby </option>
-            <option value="PHP"> PHP </option>
+            <option value="python"> Python </option>
+            <option value="java"> Java </option>
+            <option value="typescript"> TypeScript </option>
+            <option value="ruby"> Ruby </option>
+            <option value="php"> PHP </option>
           </select>
         </div>
         <div class="text-right">
@@ -28,9 +29,10 @@
         <table class='table'>
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Stars</th>
+              <th> ID </th>
+              <th> Name </th>
+              <th> Stars </th>
+              <th> </th>
             </tr>
           </thead>
           <tbody>
@@ -38,6 +40,9 @@
               <td>{{repo.id}}</td>
               <td>{{repo.name}}</td>
               <td>{{repo.stargazers_count}}</td>
+              <td>
+                <i class="fas fa-star"></i>
+              </td>
             </tr>
           </tbody>
         </table>
