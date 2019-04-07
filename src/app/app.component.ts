@@ -22,7 +22,7 @@ export class AppComponent {
 
   // tslint:disable-next-line: use-life-cycle-interface
   ngOnInit(): void {
-    this.showSavedRepos();
+    this.loadRepos();
   }
 
   onSubmit(repoForm: any) {
@@ -46,7 +46,7 @@ export class AppComponent {
       );
   }
 
-  showSavedRepos() {
+  loadRepos() {
 
     this._api.getRepositories().subscribe(
       (response) => {
@@ -54,6 +54,32 @@ export class AppComponent {
       },
       (error) => {
         console.log(error.message);
-      });
+      }
+    );
+  }
+
+  saveRepo(newRepo: Repo) {
+
+    this._api.create(newRepo).subscribe(
+      (response) => {
+        console.log(response);
+        this.loadRepos();
+      },
+      (error) => {
+        console.log(error.message);
+      }
+    );
+  }
+
+  deleteRepo(id: number) {
+    this._api.delete(id).subscribe(
+      (response) => {
+        console.log(response);
+        this.loadRepos();
+      },
+      (error) => {
+        console.log(error.message);
+      }
+    );
   }
 }

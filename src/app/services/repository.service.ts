@@ -8,21 +8,9 @@ import { Observable } from 'rxjs';
 })
 export class RepositoryService {
 
-  private _devUrl = 'http://localhost:8080/api/repositories/';
-  private _prodUrl = 'https://git-conn-api.herokuapp.com/api/repositories/';
-  private _url = '';
+  private _url = 'https://git-conn-api.herokuapp.com/api/repositories/';
 
-  constructor(private _http: HttpClient) {
-
-    // Put true for production environment, false otherwise
-    const forProduction = true;
-
-    if (forProduction) {
-      this._url = this._prodUrl;
-    } else {
-      this._url = this._devUrl;
-    }
-  }
+  constructor(private _http: HttpClient) { }
 
   public getRepositories(): Observable<any> {
 
@@ -34,11 +22,9 @@ export class RepositoryService {
   }
 
   public create(repo: Repo): Observable<any> {
-    return this._http.post(this._url, repo);
-  }
 
-  public update(repo: Repo): Observable<any> {
-    return this._http.put(this._url, repo);
+    repo.id = null;
+    return this._http.post(this._url, repo);
   }
 
   public delete(id: number): Observable<any> {

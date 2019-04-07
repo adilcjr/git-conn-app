@@ -4,11 +4,11 @@
  */
 export class Repo {
 
+    id: string;
     name: string;
     description: string;
     stargazers_count: string;
     watchers_count: string;
     html_url: string;
     language: string;
-
 }
