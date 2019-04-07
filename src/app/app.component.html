@@ -33,25 +33,16 @@
         <br>
         <ng-container *ngFor="let repo of repoGit">
 
-          {{ repo | json }}
           <div class="alert alert-info">
             <h5>{{ repo.name }}</h5>
             <p>{{ repo.description }}</p>
-
-            <p><a target="_blank" href="{{ repo.html_url }}">{{ repo.html_url }}</a></p>
             <div class="row">
               <div class="col-md-6">
                 <button type="button" class="btn btn-primary">
                     <i class="fas fa-star"></i>&nbsp;
                     <span class="badge badge-light">{{ repo.stargazers_count }}</span>
                 </button>
-                &nbsp;
-                <button type="button" class="btn btn-primary">
-                    <i class="fas fa-glasses"></i>&nbsp;
-                    <span class="badge badge-light">{{ repo.watchers_count }}</span>
-                </button>
               </div>
-
               <div class="col-md-6">
                 <div class="text-right">
                   <button type="button" class="btn btn-primary" (click)="saveRepo(repo)">
@@ -66,32 +57,38 @@
     </div>
 
     <div class="col-md-6">
-      <div class='table-responsive'>
-        <table class='table'>
-          <thead>
-            <tr>
-              <th> ID </th>
-              <th> Name </th>
-              <th> Stars </th>
-              <th> </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let repo of repoData">
-              <td>{{repo.id}}</td>
-              <td>{{repo.name}}</td>
-              <td>{{repo.stargazers_count}}</td>
-              <td>
+      <ng-container *ngFor="let repo of repoData">
+        <div class="card">
+          <h5 class="card-header">
+              {{ repo.name }}
+          </h5>
+          <div class="card-body">
+            <p class="card-text">{{ repo.description }}</p>
+            <p><a target="_blank" href="{{ repo.html_url }}">{{ repo.html_url }}</a></p>
+            <div class="row">
+              <div class="col-md-6">
+                <button type="button" class="btn btn-primary">
+                  <i class="fas fa-star"></i>&nbsp;
+                  <span class="badge badge-light">{{ repo.stargazers_count }}</span>
+                </button>
+                &nbsp;
+                <button type="button" class="btn btn-primary">
+                  <i class="fas fa-glasses"></i>&nbsp;
+                  <span class="badge badge-light">{{ repo.watchers_count }}</span>
+                </button>
+              </div>
+              <div class="col-md-6">
                 <div class="text-right">
                   <button type="button" class="btn btn-primary" (click)="deleteRepo(repo.id)">
                     <i class="fas fa-trash-alt"></i>
                   </button>
                 </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <br>
     </div>
   </section>
 </div>
