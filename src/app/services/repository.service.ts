@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Repo } from '../../assets/repo';
 import { Observable } from 'rxjs';
 
@@ -9,6 +9,13 @@ import { Observable } from 'rxjs';
 export class RepositoryService {
 
   private _url = 'https://git-conn-api.herokuapp.com/api/repositories/';
+
+  private _httpOptions = {
+    headers: new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type':  'application/json'
+    })
+  };
 
   constructor(private _http: HttpClient) { }
 
@@ -28,6 +35,7 @@ export class RepositoryService {
   }
 
   public delete(id: number): Observable<any> {
-    return this._http.delete(this._url + id);
+
+    return this._http.delete(this._url + id, this._httpOptions);
   }
 }
