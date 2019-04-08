@@ -12,12 +12,12 @@
         <div class="form-group">
           <label for="language">Choose a programming language: </label>
           &nbsp;
-          <select name="language" [(ngModel)]="language">
-            <option value="python"> Python </option>
-            <option value="java"> Java </option>
-            <option value="typescript"> TypeScript </option>
-            <option value="ruby"> Ruby </option>
-            <option value="php"> PHP </option>
+          <select name="language" [(ngModel)]="repoForm.language">
+            <option [value]="python"> Python </option>
+            <option [value]="java"> Java </option>
+            <option [value]="typescript"> TypeScript </option>
+            <option [value]="ruby"> Ruby </option>
+            <option [value]="php"> PHP </option>
           </select>
         </div>
         <div class="text-right">

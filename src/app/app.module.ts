@@ -18,7 +18,9 @@ import { GitConnectorService } from './services/git-connector.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [GitConnectorService],
+  providers: [
+    GitConnectorService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
