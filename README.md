@@ -13,7 +13,7 @@ This project have the purpose to know how to use Git API. It's ready for Heroku 
 
 ## Usage
 
-- Use `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+- Use `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 - Run `node server`. Navigate to `<server_url>:8080/`.
 - Select a programming language and click on Search. The application will bring 5 projects with more stars for that language above the search.
 - In the right side you see projects saved before.
